@@ -2,7 +2,9 @@ import React from 'react';
 import "../styles/PhotoListItem.scss";
 
 
-const PhotoListItem = ({ id, location, imageSource, username, profile }) => {
+const PhotoListItem = ({ photo }) => {
+  const { id, location, imageSource, username, profile } = photo;
+
   return (
     <div>
       <img src={imageSource} alt={`Photo by ${username}`} />
