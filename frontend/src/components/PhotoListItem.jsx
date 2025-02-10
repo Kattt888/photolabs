@@ -6,11 +6,11 @@ const PhotoListItem = ({ photo }) => {
   const { id, location, imageSource, username, profile } = photo;
 
   return (
-    <div>
-      <img src={imageSource} alt={`Photo by ${username}`} />
-      <p>Photographer: {username} </p>
-      <p>Location: {location.city}, {location.country}</p>
-      <img src={profile} alt={`${username}'s profile`} />
+    <div className="photo-list__item">
+      <img src={imageSource} alt={`Photo by ${username}`} className="photo-list__image" />
+      <p className="photo-list__photographer">Photographer: {username}</p>
+      <p className="photo-list__location">Location: {location.city}, {location.country}</p>
+      <img src={profile} alt={`${username}'s Profile Picture}`} className="photo-list__profile" />
     </div>
   ); 
 };
