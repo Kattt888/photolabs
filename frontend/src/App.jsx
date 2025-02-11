@@ -2,18 +2,41 @@ import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 
-const sampleDataForPhotoListItem = {
+function App() {
+const photos = [
+{
   id: "1",
+  username: "Joe Example",
   location: { city: "Montreal", country: "Canada" },
   imageSource: "/Image-1-Regular.jpeg",
-  username: "Joe Example",
   profile: "/profile-1.jpg",
-};  
+},
+{
+  id: "2",
+  username: "Joe Example",
+  location: { city: "Montreal", country: "Canada" },
+  imageSource: "/Image-1-Regular.jpeg",
+  profile: "/profile-1.jpg",
+},
+{
+  id: "3",
+  username: "Joe Example",
+  location: { city: "Montreal", country: "Canada" },
+  imageSource: "/Image-1-Regular.jpeg",
+  profile: "/profile-1.jpg",
+}
+];
 
-const App = () => (
-    <div className="App">
-      <PhotoListItem photo={sampleDataForPhotoListItem} />
+return (
+    <div className="photo-list">
+    {photos.map((photo) => (
+      <PhotoListItem
+      key={photo.id}
+      photo={photo}
+      />
+     ))}
     </div>
   );
+}
 
 export default App;
