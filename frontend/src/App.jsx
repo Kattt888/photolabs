@@ -13,15 +13,15 @@ const photos = [
 },
 {
   id: "2",
-  username: "Joe Example",
-  location: { city: "Montreal", country: "Canada" },
+  username: "Kevin Costner",
+  location: { city: "Toronto", country: "Canada" },
   imageSource: "/Image-1-Regular.jpeg",
   profile: "/profile-1.jpg",
 },
 {
   id: "3",
-  username: "Joe Example",
-  location: { city: "Montreal", country: "Canada" },
+  username: "Eartha Kitt",
+  location: { city: "Alabama", country: "USA" },
   imageSource: "/Image-1-Regular.jpeg",
   profile: "/profile-1.jpg",
 }
