@@ -22,7 +22,7 @@ const sampleDataForPhotoList = [
     location: { city: "Toronto", country: "Canada"},
     urls: {
       full: `/Image-2-Full.jpeg`,
-      regular: `/Image-2-Regular.jpeg`,  // ✅ Fixed missing "/"
+      regular: `/Image-2-Regular.jpeg`,
     },
     user: {
       id: "2",
@@ -50,7 +50,6 @@ const sampleDataForPhotoList = [
 const PhotoList = () => (
   <ul className="photo-list">
     {sampleDataForPhotoList.map((photo) => {
-      console.log("Photo Data:", photo);
       return <PhotoListItem key={photo.id} photo={photo} />
     })}
   </ul>
