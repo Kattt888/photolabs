@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TopNavigationBar from './components/TopNavigationBar';
 import PhotoList from './components/PhotoList';
 import './App.scss';
 
-const App = () => (
+const App = () => {
+  const [isFavPhotoExist, setIsFavPhotoExist] = useState(false);
+
+  return (
   <div className="App">
-    {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) } */}
+    <TopNavigationBar isFavPhotoExist={isFavPhotoExist} />
     <PhotoList />
   </div>
-);
+  );
+};
+
 
 export default App;
