@@ -1,9 +1,9 @@
 .top-nav-bar {
+  background-color: white;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  padding: 8px;
   align-items: center;
+  padding: 10px 40px;
   -webkit-box-shadow: 0 4px 6px -6px #222;
   -moz-box-shadow: 0 4px 6px -6px #222;
   box-shadow: 0 4px 6px -6px #222;
@@ -13,8 +13,24 @@
 .top-nav-bar__logo {
   text-decoration: overline;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 35px;
+  font-weight: bold;
   color: #111;
   text-underline-position: auto;
-  margin-left: 24px;
+  margin: 0;
+}
+
+.top-nav-bar__topic-list {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 600px;
+  background-color: white;
+}
+
+.top-nav-bar__fav {
+  display: flex;
+  align-items: center;
 }
