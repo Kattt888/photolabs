@@ -1,6 +1,16 @@
 .topic-list__item {
-  line-height: 24px;
-  margin-left: 24px;
+  padding: 10px 15px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #ddd;
+  color: #333;
+  transition: background-color 0.3s ease;
+ 
+  &:hover {
+    background-color: #bbb;
+  }
 }
 
 .topic-list__item span {
