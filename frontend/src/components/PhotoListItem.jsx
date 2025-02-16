@@ -4,25 +4,26 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = ({ photo }) => {
   if (!photo) return null;
-  const { id, location, urls, user } = photo;
+
+  const { user, location, urls } = photo;
 
   return (
     <div className="photo-list__item">
       <div className="photo-list__image-container">
       <PhotoFavButton />
       <img
-        src={urls.regular}
-        alt={`Photo by ${user.username}`}
+        src={urls.regular || "/placeholder-image.jpg"}
+        alt={`Photo by ${user?.username || "Unknown"}`}
         className="photo-list__image"
       />
       </div>
 
-      <p>Photographer: {user.username}</p>
-      <p>Location: {location.city}, {location.country}</p>
+      <p>Photographer: {user?.username || "Unknown"}</p>
+      <p>Location: {location?.city || "Unknown City"}, {location?.country || "Unknown Country"}</p>
       
       <img
-        src={user.profile}
-        alt={`${user.username}'s Profile Picture`}
+        src={user?.profile || "/default-profile.jpg"}
+        alt={`${user?.username} || "Unknown"}'s Profile Picture`}
         className="photo-list__profile"
       />
     </div>

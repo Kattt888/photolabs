@@ -2,17 +2,18 @@ import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
 
-const sampleDataForTopicList = [
-  { id: 1, slug: "topic-1", title: "Nature"},
-  { id: 2, slug: "topic-2", title: "Travel"},
-  { id: 3, slug: "topic-3", title: "People"},
-];
+const TopicList = ({ topics }) => {
+  console.log("📌 topics in TopicList:", topics);
 
-const TopicList = () => {
+  if (!topics || !Array.isArray(topics)) {
+    console.error("⚠️ topics is undefined or not an array in TopicList!");
+    return <p>No topics available.</p>;
+  }
+
   return (
     <ul className="top-nav-bar__topic-list">
-      {sampleDataForTopicList.map((topic) => (
-        <TopicListItem key={topic.id} topicName={topic.title} />
+      {topics.map((topic) => (
+        <TopicListItem key={topic.id} topic={topic} />
       ))}
     </ul>
   );
