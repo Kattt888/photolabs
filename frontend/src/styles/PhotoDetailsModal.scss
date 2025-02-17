@@ -39,9 +39,9 @@
 }
 
 .photo-details-modal__close-button img {
+  filter: invert(1);
   width: 16px;
   height: 16px;
-  filter: invert(1);
 }
 
 .photo-details-modal__image {
