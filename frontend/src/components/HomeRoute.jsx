@@ -1,17 +1,18 @@
 import React from "react";
 import TopNavigationBar from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
-import TopicList from "./TopicList";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({ topics, photos, favPhotos, toggleFavorite }) => {
+const HomeRoute = ({ photos, topics,  favPhotos, toggleFavorite, isFavPhotoExist, openModal }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} isFavPhotoExist={favPhotos.length > 0} />
-      <PhotoList 
+      <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist} />
+
+    <PhotoList 
       photos={photos} 
-      favPhotos={favPhotos} 
-      toggleFavorite={toggleFavorite} 
+      favPhotos={favPhotos || []} 
+      toggleFavorite={toggleFavorite}
+      openModal={openModal} 
       />
     </div>
   );

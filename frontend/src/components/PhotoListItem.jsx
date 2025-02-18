@@ -2,7 +2,7 @@ import React from 'react';
 import PhotoFavButton from './PhotoFavButton';
 import "../styles/PhotoListItem.scss";
 
-const PhotoListItem = ({ photo, favPhotos, toggleFavorite }) => {
+const PhotoListItem = ({ photo, favPhotos, toggleFavorite, openModal }) => {
   if (!photo) return null;
 
   const user = photo?.user || {};
@@ -10,16 +10,17 @@ const PhotoListItem = ({ photo, favPhotos, toggleFavorite }) => {
   const urls = photo?.urls || {};
 
   return (
-    <div className="photo-list__item">
+    <div className="photo-list__item" onClick={() => openModal(photo)}>
       <div className="photo-list__image-container">
         <PhotoFavButton 
-          isFav={favPhotos.includes(photo.id)}
+          isFav={Array.isArray(favPhotos) && favPhotos.includes(photo.id)}
           toggleFavorite={() => toggleFavorite(photo.id)}
         />
         <img
           src={urls.regular || "/placeholder-image.jpg"}
           alt={`Photo by ${user?.username || "Unknown"}`}
           className="photo-list__image"
+          style={{ cursor: "pointer" }}
         />
       </div>
 
@@ -36,4 +37,5 @@ const PhotoListItem = ({ photo, favPhotos, toggleFavorite }) => {
 };
 
 export default PhotoListItem;
+
 
