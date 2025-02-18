@@ -1,47 +1,54 @@
-import { useState } from "react";
+import { useReducer, useEffect } from "react";
+import { reducer } from "../reducers/reducer"; 
+import { ACTIONS } from "../reducers/actions";
+
+const initialState = {
+  photos: [],
+  topics: [],
+  favPhotos: [],
+  selectedPhoto: null,
+  displayModal: false
+};
 
 const useApplicationData = () => {
-  // Defining State
-  const [state, setState] = useState({
-    favPhotos: [],
-    selectedPhoto: null,
-    displayModal: false,
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Update Favorite Photos
-  const updateToFavPhotoIds = (photoId) => {
-    setState((prev) => ({
-      ...prev,
-      favPhotos: prev.favPhotos.includes(photoId)
-        ? prev.favPhotos.filter((id) => id !== photoId)
-        : [...prev.favPhotos, photoId],
-    }));
+  // Fetch photo and topic data
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
+
+    fetch("/api/topics")
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
+  }, []);
+
+  // toggle favorite photos function
+  const toggleFavorite = (photoId) => {
+    if (state.favPhotos.includes(photoId)) {
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId } });
+    } else {
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: photoId } });
+    }
   };
 
-  // Set Selected Photo (Open Modal)
-  const setPhotoSelected = (photo) => {
-    setState((prev) => ({
-      ...prev,
-      selectedPhoto: photo,
-      displayModal: true,
-    }));
+  // open modal and set the selected photo function
+  const openModal = (photo) => {
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: true });
   };
 
-  // Close Modal
-  const onClosePhotoDetailsModal = () => {
-    setState((prev) => ({
-      ...prev,
-      selectedPhoto: null,
-      displayModal: false,
-    }));
+  // close modal function
+  const closeModal = () => {
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: false });
   };
 
-  // Return State & Actions
   return {
     state,
-    updateToFavPhotoIds,
-    setPhotoSelected,
-    onClosePhotoDetailsModal,
+    toggleFavorite,
+    openModal,
+    closeModal
   };
 };
 

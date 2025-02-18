@@ -1,35 +1,28 @@
-import React, { useState } from 'react';
-import useApplicationData from "./hooks/useApplicationData";
+import React from "react";
 import HomeRoute from "./components/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
-import topics from "./mocks/topics";
-import photos from "./mocks/photos";
+import useApplicationData from "./hooks/useApplicationData";
 import "./App.scss";
 
 const App = () => {
-  const { 
-    state, 
-    updateToFavPhotoIds, 
-    setPhotoSelected, 
-    onClosePhotoDetailsModal 
-  } = useApplicationData();
+  const { state, toggleFavorite, openModal, closeModal } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
-        photos={state.photos} // photos from mock data
-        topics={topics}
+        photos={state.photos}
+        topics={state.topics}
         favPhotos={state.favPhotos}
-        toggleFavorite={updateToFavPhotoIds}
-        openModal={setPhotoSelected}
+        toggleFavorite={toggleFavorite}
+        openModal={openModal}
       />
 
       {state.displayModal && state.selectedPhoto && (
         <PhotoDetailsModal
           selectedPhoto={state.selectedPhoto}
           favPhotos={state.favPhotos}
-          toggleFavorite={updateToFavPhotoIds}
-          closeModal={onClosePhotoDetailsModal}
+          toggleFavorite={toggleFavorite}
+          closeModal={closeModal}
         />
       )}
     </div>
@@ -37,3 +30,4 @@ const App = () => {
 };
 
 export default App;
+
