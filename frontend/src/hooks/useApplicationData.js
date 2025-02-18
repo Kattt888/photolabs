@@ -1,5 +1,4 @@
 import { useState } from "react";
-import photos from "./mocks/photos";
 
 const useApplicationData = () => {
   // Defining State
