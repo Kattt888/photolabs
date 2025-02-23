@@ -14,10 +14,7 @@ const PhotoListItem = ({ photo, favPhotos, toggleFavorite, openModal }) => {
     <div className="photo-list__item">
       {/* Image container with heart button in the top-left */}
       <div className="photo-list__image-container">
-        <PhotoFavButton 
-          isFav={isFav}
-          toggleFavorite={() => toggleFavorite(photo.id)}
-        />
+        <PhotoFavButton isFav={isFav} toggleFavorite={() => toggleFavorite(photo.id)} />
         <img
           src={urls.regular || "/placeholder-image.jpg"}
           alt={`Photo by ${user?.username || "Unknown"}`}

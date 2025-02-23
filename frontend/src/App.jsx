@@ -1,6 +1,6 @@
 import React from "react";
-import HomeRoute from "./components/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
+import HomeRoute from "./components/HomeRoute";
 import useApplicationData from "./hooks/useApplicationData";
 import "./App.scss";
 
@@ -30,4 +30,3 @@ const App = () => {
 };
 
 export default App;
-

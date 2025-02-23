@@ -1,67 +1,46 @@
-import React, { useEffect } from 'react';
-import '../styles/PhotoDetailsModal.scss';
-import closeSymbol from '../assets/closeSymbol.svg';
-import PhotoFavButton from '../components/PhotoFavButton';
-import PhotoListItem from '../components/PhotoListItem';
+import React, { useEffect } from "react";
+import "../styles/PhotoDetailsModal.scss";
+import closeSymbol from "../assets/closeSymbol.svg";
+import PhotoFavButton from "../components/PhotoFavButton";
+import PhotoListItem from "../components/PhotoListItem";
 
-const PhotoDetailsModal = ({ selectedPhoto, photos, favPhotos, toggleFavorite, closeModal }) => {
-  if (!selectedPhoto) return null;
+const PhotoDetailsModal = ({ selectedPhoto, favPhotos, toggleFavorite, closeModal }) => {
+  if (!selectedPhoto || Object.keys(selectedPhoto).length === 0) {
+    console.warn("🚨 No valid selectedPhoto data. Modal will not render.");
+    return null;
+  }
 
   console.log("📸 Displaying Photo in Modal:", selectedPhoto);
   console.log("💖 Favourite Photos:", favPhotos);
 
-  const { id, urls, user, location, topic } = selectedPhoto;
+  const { id, urls, user, location, similar_photos } = selectedPhoto;
   const isFav = favPhotos.includes(id);
 
-  // Calculate Similar Photos inside the component
-  const similarPhotos = photos
-    .filter((photo) => photo.topic === topic && photo.id !== id)
-    .slice(0, 4);
-
-  const handleOverlayClick = (event) => {
-    if (event.target === event.currentTarget) {
-      closeModal();
-    }
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        closeModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [closeModal]);
+  // `similar_photos` array
+  const similarPhotos = Array.isArray(similar_photos) ? similar_photos.slice(0, 4) : [];
 
   return (
-    <div className="photo-details-modal" onClick={handleOverlayClick}>
+    <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={closeModal}>
         <img src={closeSymbol} alt="Close Modal" />
       </button>
 
-      {/* Fav Button inside Modal */}
-      <div className="photo-details-modal__content" onClick={(e) => e.stopPropagation()}>
+      <div className="photo-details-modal__content">
         <PhotoFavButton isFav={isFav} toggleFavorite={() => toggleFavorite(id)} />
 
-        {/* Selected Photo */}
         <img
           src={urls?.regular || "/placeholder-image.jpg"}
           alt={`Photo by ${user?.username || "Unknown"}`}
           className="photo-details-modal__image"
         />
 
-        {/* Photographer Info */}
         <div className="photo-details-modal__info">
           <p><strong>Photographer:</strong> {user?.username || "Unknown"}</p>
           <p><strong>Location:</strong> {location?.city || "Unknown City"}, {location?.country || "Unknown Country"}</p>
         </div>
 
-        {/* Similar Photos Calculated Inside Component) */}
-        {similarPhotos.length > 0 && (
+        {/* Show Similar Photos */}
+        {similarPhotos.length > 0 ? (
           <div className="photo-details-modal__similar-photos">
             <h3>Similar Photos</h3>
             <div className="photo-details-modal__similar-list">
@@ -75,6 +54,8 @@ const PhotoDetailsModal = ({ selectedPhoto, photos, favPhotos, toggleFavorite, c
               ))}
             </div>
           </div>
+        ) : (
+          <p>No similar photos found.</p>
         )}
       </div>
     </div>
@@ -82,3 +63,4 @@ const PhotoDetailsModal = ({ selectedPhoto, photos, favPhotos, toggleFavorite, c
 };
 
 export default PhotoDetailsModal;
+
