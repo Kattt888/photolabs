@@ -20,7 +20,7 @@ export function reducer(state, action) {
     case ACTIONS.SELECT_PHOTO:
       return { ...state, selectedPhoto: action.payload };
 
-    case ACTIONS.DISPLAY_PHOTO_DETAILS:
+    case ACTIONS.TOGGLE_MODAL:
       return { ...state, displayModal: action.payload };
 
     default:
