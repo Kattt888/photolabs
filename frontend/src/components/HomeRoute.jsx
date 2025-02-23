@@ -5,10 +5,14 @@ import "../styles/HomeRoute.scss";
 
 const HomeRoute = ({ photos, topics,  favPhotos, toggleFavorite, openModal }) => {
   return (
-    
     <div className="home-route">
       <TopNavigationBar topics={topics} isFavPhotoExist={favPhotos.length > 0} />
-      <PhotoList photos={photos} favPhotos={favPhotos || []} toggleFavorite={toggleFavorite} openModal={openModal} />
+      <PhotoList 
+      photos={photos} 
+      favPhotos={favPhotos || []} 
+      toggleFavorite={toggleFavorite} 
+      openModal={openModal} 
+      />
     </div>
   );
 };
