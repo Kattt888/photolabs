@@ -20,47 +20,52 @@ const PhotoDetailsModal = ({ selectedPhoto, favPhotos, toggleFavorite, closeModa
   const similarPhotos = Array.isArray(similar_photos) ? similar_photos.slice(0, 4) : [];
 
   return (
-    <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={closeModal}>
-        <img src={closeSymbol} alt="Close Modal" />
-      </button>
-
-      <div className="photo-details-modal__content">
-        <PhotoFavButton isFav={isFav} toggleFavorite={() => toggleFavorite(id)} />
-
-        <img
-          src={urls?.regular || "/placeholder-image.jpg"}
-          alt={`Photo by ${user?.username || "Unknown"}`}
-          className="photo-details-modal__image"
-        />
-
-        <div className="photo-details-modal__info">
-          <p><strong>Photographer:</strong> {user?.username || "Unknown"}</p>
-          <p><strong>Location:</strong> {location?.city || "Unknown City"}, {location?.country || "Unknown Country"}</p>
-        </div>
-
-        {/* Show Similar Photos */}
-        {similarPhotos.length > 0 ? (
-          <div className="photo-details-modal__similar-photos">
-            <h3>Similar Photos</h3>
-            <div className="photo-details-modal__similar-list">
-              {similarPhotos.map((photo) => (
-                <PhotoListItem
-                  key={photo.id}
-                  photo={photo}
-                  favPhotos={favPhotos}
-                  toggleFavorite={toggleFavorite}
-                />
-              ))}
-            </div>
+    <>
+      {/* Background Overlay */}
+      <div className="photo-details-overlay" onClick={closeModal}></div>
+  
+      {/* Modal Content */}
+      <div className="photo-details-modal">
+        <button className="photo-details-modal__close-button" onClick={closeModal}>
+          <img src={closeSymbol} alt="Close Modal" />
+        </button>
+  
+        <div className="photo-details-modal__content">
+          <PhotoFavButton isFav={isFav} toggleFavorite={() => toggleFavorite(id)} />
+  
+          <img
+            src={urls?.regular || "/placeholder-image.jpg"}
+            alt={`Photo by ${user?.username || "Unknown"}`}
+            className="photo-details-modal__image"
+          />
+  
+          <div className="photo-details-modal__info">
+            <p><strong>Photographer:</strong> {user?.username || "Unknown"}</p>
+            <p><strong>Location:</strong> {location?.city || "Unknown City"}, {location?.country || "Unknown Country"}</p>
           </div>
-        ) : (
-          <p>No similar photos found.</p>
-        )}
+  
+          {/* Show Similar Photos */}
+          {similarPhotos.length > 0 ? (
+            <div className="photo-details-modal__similar-photos">
+              <h3>Similar Photos</h3>
+              <div className="photo-details-modal__similar-list">
+                {similarPhotos.map((photo) => (
+                  <PhotoListItem
+                    key={photo.id}
+                    photo={photo}
+                    favPhotos={favPhotos}
+                    toggleFavorite={toggleFavorite}
+                  />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p>No similar photos found.</p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default PhotoDetailsModal;
-
