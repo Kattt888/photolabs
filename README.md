@@ -51,7 +51,7 @@ Ensure your `package.json` includes these dependencies:
   }
 }
 
-**Backend:**
+Backend:
 
 {
   "dependencies": {
@@ -67,7 +67,6 @@ Ensure your `package.json` includes these dependencies:
 
 ### 1️⃣ Clone the Repository
 
-```sh
 git clone https://github.com/Kattt888/photolabs.git
 cd photolabs
 
