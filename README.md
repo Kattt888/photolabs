@@ -52,7 +52,7 @@ Ensure your `package.json` includes these dependencies:
 }
 
 ### **Backend:**
-```json
+
 {
   "dependencies": {
     "express": "^4.16.4",
