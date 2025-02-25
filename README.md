@@ -12,15 +12,15 @@ PhotoLabs is a React-based Single Page Application (SPA) that allows users to br
 
 ## Screenshots 📸
 
-## Homepage
+### Homepage
 ![Homepage](./docs/Home%20Page%20Img.png)
 
-## Photo Modal
+### Photo Modal
 ![Photo Modal](./docs/The%20photo%20modal%20img.png)
 
 ## Tech Stack 🛠️
 
-Frontend:
+### Frontend:
 
 - React (Vite for fast development)
 - React Hooks (useState, useEffect, useReducer)
@@ -28,7 +28,7 @@ Frontend:
 - Axios for API requests
 - React Router
 
-Backend:
+### Backend:
 
 - Express.js (Node.js framework)
 - PostgreSQL (Database)
@@ -50,9 +50,10 @@ Ensure your `package.json` includes these dependencies:
     "react-router-dom": "^6.4.0"
   }
 }
+```
 
-Backend:
-
+### **Backend:**
+```json
 {
   "dependencies": {
     "express": "^4.16.4",
@@ -61,28 +62,29 @@ Backend:
     "dotenv": "^7.0.0"
   }
 }
-
+```
 
 ## Installation & Setup 📝
 
 ### 1️⃣ Clone the Repository
-
+```sh
 git clone https://github.com/Kattt888/photolabs.git
 cd photolabs
+```
 
-
-2️⃣ Backend Setup
-
+### 2️⃣ Backend Setup
+```sh
 cd backend
 cp .env.example .env  # Update DB credentials
 npm install
 npm run reset  # Set up database
 npm start
+```
 
-
-3️⃣ Frontend Setup
-
+### 3️⃣ Frontend Setup
+```sh
 cd ../frontend
 npm install
 npm run dev  # Start React app
+```
 
