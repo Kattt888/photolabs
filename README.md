@@ -1,6 +1,6 @@
 # Photolabs 📷
 
-PhotoLabs is a React-based Single Page Application (SPA) that allows users to browse photos, interact with categories, and like their favorite images. The app fetches data from a PostgreSQL database via an Express.js API and provides a seamless user experience.
+PhotoLabs is a React-based Single Page Application (SPA) that allows users to browse photos, interact with categories, and like their favorite images. The app fetches data from a PostgreSQL database.
 
 ## Features 🚀
 
