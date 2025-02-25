@@ -18,14 +18,8 @@ const useApplicationData = () => {
   // Fetching photo + topics  data from API via promise.all + error handling
   useEffect(() => {
     Promise.all([
-      fetch(`${API_URL}/api/photos`).then(res => {
-        if (!res.ok) throw new Error("Failed to fetch photos");
-        return res.json();
-      }),
-      fetch(`${API_URL}/api/topics`).then(res => {
-        if (!res.ok) throw new Error("Failed to fetch topics");
-        return res.json();
-      })
+      fetch(`${API_URL}/api/photos`).then(res => res.json()),
+      fetch(`${API_URL}/api/topics`).then(res => res.json())
     ])
     .then(([photosData, topicsData]) => {
       dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photosData });
@@ -34,8 +28,29 @@ const useApplicationData = () => {
     .catch(error => console.error("Error fetching data:", error));
   }, []);
 
+  // Function to fetch photos by topic
+  const fetchPhotosByTopic = (topicId) => {
+    fetch(`${API_URL}/api/topics/${topicId}/photos`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch topic photos");
+      return res.json();
+    })
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch(error => console.error("Error fetching topic photos:", error));
+  };
+
+  const openModal = (photo) => {
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
+    dispatch({ type: ACTIONS.TOGGLE_MODAL, payload: true });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: ACTIONS.TOGGLE_MODAL, payload: false });
+  };
+
   return {
     state,
+    fetchPhotosByTopic,
     toggleFavorite: (photoId) => {
       dispatch({
         type: state.favPhotos.includes(photoId)
@@ -44,13 +59,8 @@ const useApplicationData = () => {
         payload: { id: photoId }
       });
     },
-    openModal: (photo) => {
-      dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
-      dispatch({ type: ACTIONS.TOGGLE_MODAL, payload: true });
-    },
-    closeModal: () => {
-      dispatch({ type: ACTIONS.TOGGLE_MODAL, payload: false });
-    }
+    openModal,
+    closeModal 
   };
 };
 

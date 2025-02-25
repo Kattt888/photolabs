@@ -19,7 +19,11 @@ const PhotoListItem = ({ photo, favPhotos, toggleFavorite, openModal }) => {
           src={urls.regular || "/placeholder-image.jpg"}
           alt={`Photo by ${user?.username || "Unknown"}`}
           className="photo-list__image"
-          onClick={() => openModal(photo)}
+          onClick={() => {
+            if (openModal) {
+            openModal(photo)}
+          }
+          }
         />
       </div>
 

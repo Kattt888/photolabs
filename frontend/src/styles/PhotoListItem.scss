@@ -60,24 +60,31 @@
   align-items: center;
   width: 100%;
   padding: 10px;
+  min-height: 50px;
+  gap: 8px; 
 }
 
 /* 🔹 Profile Pic */
 .photo-list__profile {
   object-fit: cover;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   margin-right: 10px;
+  flex-shrink: 0;
 }
 
 /* 🔹 User Name & Location */
 .photo-list__user-info {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   font-weight: bold;
   font-size: 14px;
   color: #333;
+  flex: 1;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .photo-list__user-location {
