@@ -51,7 +51,7 @@ Ensure your `package.json` includes these dependencies:
   }
 }
 
-### **Backend:**
+**Backend:**
 
 {
   "dependencies": {
@@ -65,20 +65,25 @@ Ensure your `package.json` includes these dependencies:
 
 ## Installation & Setup 📝
 
-1. Clone the Repository
+### 1️⃣ Clone the Repository
 
-- git clone https://github.com/Kattt888/photolabs.git
-- cd photolabs
+```sh
+git clone https://github.com/Kattt888/photolabs.git
+cd photolabs
 
-2. [Backend Setup Instructions](/backend/)
 
-- cd backend
-- cp .env.example .env  # Update DB credentials
-- npm install
-- npm run reset  # Set up database
-- npm start
+2️⃣ Backend Setup
 
-3. [Frontend Setup Instructions](/frontend/)
-- cd ../frontend
-- npm install
-- npm run dev  # Start React app
+cd backend
+cp .env.example .env  # Update DB credentials
+npm install
+npm run reset  # Set up database
+npm start
+
+
+3️⃣ Frontend Setup
+
+cd ../frontend
+npm install
+npm run dev  # Start React app
+
