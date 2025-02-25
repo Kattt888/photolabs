@@ -4,42 +4,45 @@ PhotoLabs is a React-based Single Page Application (SPA) that allows users to br
 
 ## Features 🚀
 
--View photos from the homepage loaded from the API
--Navigate to different photo categories
--Click on a photo to view a larger version and similar images
--Like (favorite) photos with the heart icon notification
--Responsive design for different screen sizes
+1. View photos from the homepage loaded from the API
+2. Navigate to different photo categories
+3. Click on a photo to view a larger version and similar images
+4. Like (favorite) photos with the heart icon notification
+5. Responsive design for different screen sizes
 
 ## Screenshots 📸
 
-### Homepage
+## Homepage
 ![Homepage](./docs/Home%20Page%20Img.png)
 
-### Photo Modal
+## Photo Modal
 ![Photo Modal](./docs/The%20photo%20modal%20img.png)
 
 ## Tech Stack 🛠️
 
 Frontend:
--React (Vite for fast development)
--React Hooks (useState, useEffect, useReducer)
--SCSS for styling
--Axios for API requests
--React Router
+
+- React (Vite for fast development)
+- React Hooks (useState, useEffect, useReducer)
+- SCSS for styling
+- Axios for API requests
+- React Router
 
 Backend:
--Express.js (Node.js framework)
--PostgreSQL (Database)
--pg (Node.js library for PostgreSQL)
--dotenv (Manage environment variables)
--CORS & Helmet for security
+
+- Express.js (Node.js framework)
+- PostgreSQL (Database)
+- pg (Node.js library for PostgreSQL)
+- dotenv (Manage environment variables)
+- CORS & Helmet for security
 
 ## Dependencies 📦
 
 Ensure your package.json includes these dependencies:
 
-Frontend:
+### **Frontend:**
 
+```json
 "dependencies": {
   "react": "^18.3.1",
   "react-dom": "^18.3.1",
@@ -47,7 +50,7 @@ Frontend:
   "react-router-dom": "^6.4.0"
 }
 
-Backend:
+### **Backend:**
 
 "dependencies": {
   "express": "^4.16.4",
@@ -59,18 +62,20 @@ Backend:
 
 ## Installation & Setup 📝
 
-###1. Clone the Repository
-git clone https://github.com/Kattt888/photolabs.git
-cd photolabs
+1. Clone the Repository
 
-###2. [Backend Setup Instructions](/backend/)
-cd backend
-cp .env.example .env  # Update DB credentials
-npm install
-npm run reset  # Set up database
-npm start
+- git clone https://github.com/Kattt888/photolabs.git
+- cd photolabs
 
-###3. [Frontend Setup Instructions](/frontend/)
-cd ../frontend
-npm install
-npm run dev  # Start React app
+2. [Backend Setup Instructions](/backend/)
+
+- cd backend
+- cp .env.example .env  # Update DB credentials
+- npm install
+- npm run reset  # Set up database
+- npm start
+
+3. [Frontend Setup Instructions](/frontend/)
+- cd ../frontend
+- npm install
+- npm run dev  # Start React app
