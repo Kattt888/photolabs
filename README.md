@@ -38,25 +38,28 @@ Backend:
 
 ## Dependencies 📦
 
-Ensure your package.json includes these dependencies:
+Ensure your `package.json` includes these dependencies:
 
 ### **Frontend:**
-
 ```json
-"dependencies": {
-  "react": "^18.3.1",
-  "react-dom": "^18.3.1",
-  "axios": "^1.6.0",
-  "react-router-dom": "^6.4.0"
+{
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "axios": "^1.6.0",
+    "react-router-dom": "^6.4.0"
+  }
 }
 
 ### **Backend:**
-
-"dependencies": {
-  "express": "^4.16.4",
-  "pg": "^8.5.0",
-  "cors": "^2.8.5",
-  "dotenv": "^7.0.0"
+```json
+{
+  "dependencies": {
+    "express": "^4.16.4",
+    "pg": "^8.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0"
+  }
 }
 
 
