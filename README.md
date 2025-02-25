@@ -1,9 +1,78 @@
-# Photolabs
+# Photolabs 📷
 
-The PhotoLabs project for the Web Development React course programming.
+PhotoLabs is a React-based Single Page Application (SPA) that allows users to browse photos, interact with categories, and like their favorite images. The app fetches data from a PostgreSQL database via an Express.js API and provides a seamless user experience.
 
-## Setup
+# Features 🚀
 
-[Backend Setup Instructions](/backend/)
+-View photos from the homepage loaded from the API
+-Navigate to different photo categories
+-Click on a photo to view a larger version and similar images
+-Like (favorite) photos with the heart icon notification
+-Responsive design for different screen sizes
 
-[Frontend Setup Instructions](/frontend/)
+## Screenshots 📸
+
+### Homepage
+![Homepage](docs/image1.png)
+
+### Photo Modal
+![Photo Modal](docs/image2.png)
+
+# Tech Stack 🛠️
+
+Frontend:
+-React (Vite for fast development)
+-React Hooks (useState, useEffect, useReducer)
+-SCSS for styling
+-Axios for API requests
+-React Router
+
+Backend:
+-Express.js (Node.js framework)
+-PostgreSQL (Database)
+-pg (Node.js library for PostgreSQL)
+-dotenv (Manage environment variables)
+-CORS & Helmet for security
+
+# Dependencies 📦
+
+Ensure your package.json includes these dependencies:
+
+Frontend:
+
+"dependencies": {
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "axios": "^1.6.0",
+  "react-router-dom": "^6.4.0"
+}
+
+Backend:
+
+"dependencies": {
+  "express": "^4.16.4",
+  "pg": "^8.5.0",
+  "cors": "^2.8.5",
+  "dotenv": "^7.0.0"
+}
+
+
+## Installation & Setup 📝
+
+1. Clone the Repository
+
+git clone https://github.com/Kattt888/photolabs.git
+cd photolabs
+
+
+2. [Backend Setup Instructions](/backend/)
+cd backend
+cp .env.example .env  # Update DB credentials
+npm install
+npm run reset  # Set up database
+npm start
+
+3. [Frontend Setup Instructions](/frontend/)
+cd ../frontend
+npm install
+npm run dev  # Start React app
