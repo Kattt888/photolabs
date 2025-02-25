@@ -59,20 +59,18 @@ Backend:
 
 ## Installation & Setup 📝
 
-1. Clone the Repository
-
+###1. Clone the Repository
 git clone https://github.com/Kattt888/photolabs.git
 cd photolabs
 
-
-2. [Backend Setup Instructions](/backend/)
+###2. [Backend Setup Instructions](/backend/)
 cd backend
 cp .env.example .env  # Update DB credentials
 npm install
 npm run reset  # Set up database
 npm start
 
-3. [Frontend Setup Instructions](/frontend/)
+###3. [Frontend Setup Instructions](/frontend/)
 cd ../frontend
 npm install
 npm run dev  # Start React app
