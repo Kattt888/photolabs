@@ -1,10 +1,54 @@
+/* Default Light Mode (uses CSS variables) */
+body {
+  --background-color: #ffffff;
+  --text-color: #333;
+  --nav-background: #f8f9fa;
+  --nav-text-color: #000;
+  --modal-background: #ffffff;
+  --modal-text-color: #000;
+  --photo-card-background: #ffffff;
+  --photo-card-text: #000;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --nav-background: #222;
+  --nav-text-color: #fff;
+  --modal-background: #222;
+  --modal-text-color: #fff;
+  --photo-card-background: #333;
+  --photo-card-text: #fff;
+}
+
+/* Dark Mode Background is Dark */
+body {
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease-in-out;
+}
+
+body.dark-mode {
+  background-color: #000;
+}
+
+/* Main App Styles */
 .App {
   margin: 24px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  filter: var(--logo-filter, none); /* Light Mode */
+}
+
+body.dark-mode .App-logo {
+  --logo-filter: invert(1); /* Inverts color in dark mode */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,15 +57,87 @@
   }
 }
 
+/* Navbar Dark Mode */
+.top-nav-bar {
+  background-color: var(--nav-background);
+  color: var(--nav-text-color);
+}
+
+/* Photo Cards Dark Mode*/
+.photo-list__item {
+  background-color: var(--photo-card-background);
+  color: var(--photo-card-text);
+  border: 1px solid var(--photo-card-border, #ccc);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;;
+}
+
+body.dark-mode .photo-list__item {
+  --photo-card-border: #444; /* Dark mode border */
+}
+
+.photo-list__item h3 {
+  color: var(--photo-card-text);
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Photo Modal */
+.photo-details-modal {
+  background-color: var(--modal-background);
+  color: var(--modal-text-color);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Similar Photos Section */
+.photo-details-modal__similar-photos {
+  background-color: var(--modal-background);
+  color: var(--modal-text-color);
+}
+
+/* Modal Close Button */
+.photo-details-modal__close-button {
+  background-color: var(--modal-background);
+  border: 2px solid var(--modal-text-color);
+  color: black; /* Ensures visibility in light mode */
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Light Mode Close Button Visible */
+.photo-details-modal__close-button img {
+  filter: none !important; /* Removes the forced invert */
+}
+
+/* Dark Mode: Ensure Close Button is White */
+body.dark-mode .photo-details-modal__close-button {
+  color: white; /* Ensures it's visible in dark mode */
+  border: 2px solid white;
+}
+
+/* Dark Mode: Invert Close Button */
+body.dark-mode .photo-details-modal__close-button img {
+  filter: invert(1) !important; /* Forces white icon in dark mode */
+}
+
+
 .App-header {
-  background-color: #282c34;
+  background-color: var(--nav-background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-color);
 }
 
 .App-link {
