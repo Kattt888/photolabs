@@ -84,6 +84,8 @@ npm start
 ### 3️⃣ Frontend Setup
 ```sh
 cd ../frontend
+cp .env.example .env  # Create the environment file
+Please make sure your .env file includes: VITE_API_URL=http://localhost:8001
 npm install
 npm run dev  # Start React app
 ```
