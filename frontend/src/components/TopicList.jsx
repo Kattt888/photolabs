@@ -3,7 +3,6 @@ import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
 
 const TopicList = ({ topics }) => {
-  console.log("📌 topics in TopicList:", topics);
 
   if (!topics || !Array.isArray(topics)) {
     console.error("⚠️ topics is undefined or not an array in TopicList!");

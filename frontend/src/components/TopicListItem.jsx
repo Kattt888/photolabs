@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/TopicListItem.scss";
 
 const TopicListItem = ({ topic }) => {
-  console.log("📌 Rendering TopicListItem:", topic);
   
   if (!topic || !topic.title) {
     console.error("⚠️ topic.title is undefined in TopicListItem!");  
