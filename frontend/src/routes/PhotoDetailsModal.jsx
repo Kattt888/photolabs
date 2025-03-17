@@ -10,9 +10,6 @@ const PhotoDetailsModal = ({ selectedPhoto, favPhotos, toggleFavorite, closeModa
     return null;
   }
 
-  console.log("📸 Displaying Photo in Modal:", selectedPhoto);
-  console.log("💖 Favourite Photos:", favPhotos);
-
   const { id, urls, user, location, similar_photos } = selectedPhoto;
   const isFav = favPhotos.includes(id);
 

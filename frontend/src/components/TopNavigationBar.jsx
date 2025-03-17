@@ -14,7 +14,6 @@ const TopNavigationBar = ({ topics, isFavPhotoExist, fetchPhotosByTopic }) => {
             key={topic.id} 
             className="topic-list__item"
             onClick={() => { 
-              console.log("Clicked Topic ID:", topic.id);  // Debugging Log
               fetchPhotosByTopic(topic.id);
             }}
             style={{ cursor: "pointer" }} 
