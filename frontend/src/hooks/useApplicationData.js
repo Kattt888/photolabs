@@ -2,7 +2,8 @@ import { useReducer, useEffect } from "react";
 import { reducer } from "../reducers/reducers"; 
 import { ACTIONS } from "../reducers/actions";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8001";
+
 
 const initialState = {
   photos: [],
