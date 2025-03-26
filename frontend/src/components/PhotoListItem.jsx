@@ -13,8 +13,7 @@ const PhotoListItem = ({ photo, favPhotos, toggleFavorite, openModal }) => {
   return (
     <div className="photo-list__item">
       {/* Image container with heart button in the top-left */}
-      <div className="photo-list__image-container">
-        <PhotoFavButton isFav={isFav} toggleFavorite={() => toggleFavorite(photo.id)} />
+      {/* <div className="photo-list__image-container"> */}
         <img
           src={urls.regular || "/placeholder-image.jpg"}
           alt={`Photo by ${user?.username || "Unknown"}`}
@@ -25,18 +24,19 @@ const PhotoListItem = ({ photo, favPhotos, toggleFavorite, openModal }) => {
           }
           }
         />
-      </div>
+        <PhotoFavButton isFav={isFav} toggleFavorite={() => toggleFavorite(photo.id)} />
+      {/* </div> */}
 
       {/* Photographer's Profile & Details */}
-      <div className="photo-list__details">
+      <div className="photo-list__user-details">
         <img
           src={user?.profile || "/default-profile.jpg"}
           alt={`${user?.username || "Unknown"}'s Profile Picture`}
-          className="photo-list__profile"
+          className="photo-list__user-profile"
         />
-        <div className="photo-list__info">
-          <p className="photo-list__username">{user?.username || "Unknown"}</p>
-          <p className="photo-list__location">
+        <div className="photo-list__user-info">
+          <p className="photo-list__user-name">{user?.username || "Unknown"}</p>
+          <p className="photo-list__user-location">
             {location?.city || "Unknown City"}, {location?.country || "Unknown Country"}
           </p>
         </div>

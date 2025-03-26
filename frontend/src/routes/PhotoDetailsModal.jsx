@@ -27,19 +27,21 @@ const PhotoDetailsModal = ({ selectedPhoto, favPhotos, toggleFavorite, closeModa
           <img src={closeSymbol} alt="Close Modal" />
         </button>
   
-        <div className="photo-details-modal__content">
-          <PhotoFavButton isFav={isFav} toggleFavorite={() => toggleFavorite(id)} />
-  
+        <div className="photo-details-modal__image">
           <img
             src={urls?.regular || "/placeholder-image.jpg"}
             alt={`Photo by ${user?.username || "Unknown"}`}
             className="photo-details-modal__image"
           />
+           <PhotoFavButton isFav={isFav} toggleFavorite={() => toggleFavorite(id)} />
+           
   
-          <div className="photo-details-modal__info">
+          <div className="photo-details-modal__photographer-details">
             <p><strong>Photographer:</strong> {user?.username || "Unknown"}</p>
             <p><strong>Location:</strong> {location?.city || "Unknown City"}, {location?.country || "Unknown Country"}</p>
           </div>
+
+          <div className="img.photo-list__user-profile"></div>
   
           {/* Show Similar Photos */}
           {similarPhotos.length > 0 ? (

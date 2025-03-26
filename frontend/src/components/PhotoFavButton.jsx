@@ -4,7 +4,7 @@ import '../styles/PhotoFavButton.scss';
 const PhotoFavButton = ({ isFav, toggleFavorite }) => {
   return (
     <button
-      className={`photo-list__fav-button ${isFav ? "fav-active" : ""}`}
+      className={`photo-list__fav-icon ${isFav ? "fav-active" : ""}`}
       onClick={toggleFavorite}
       >
       {isFav ? '❤️' : '🤍'}
