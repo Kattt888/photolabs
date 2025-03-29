@@ -2,8 +2,6 @@ import { useReducer, useEffect } from "react";
 import { reducer } from "../reducers/reducers"; 
 import { ACTIONS } from "../reducers/actions";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8001";
-
 
 const initialState = {
   photos: [],
@@ -19,8 +17,8 @@ const useApplicationData = () => {
   // Fetching photo + topics  data from API via promise.all + error handling
   useEffect(() => {
     Promise.all([
-      fetch(`${API_URL}/api/photos`).then(res => res.json()),
-      fetch(`${API_URL}/api/topics`).then(res => res.json())
+      fetch("/api/photos").then(res => res.json()),
+      fetch("/api/topics").then(res => res.json())
     ])
     .then(([photosData, topicsData]) => {
       dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photosData });
@@ -29,9 +27,17 @@ const useApplicationData = () => {
     .catch(error => console.error("Error fetching data:", error));
   }, []);
 
+ 
+  
+  useEffect(() => {
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+  }, []);
+
   // Function to fetch photos by topic
   const fetchPhotosByTopic = (topicId) => {
-    fetch(`${API_URL}/api/topics/${topicId}/photos`)
+    fetch(`$/api/topics/${topicId}/photos`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch topic photos");
       return res.json();
