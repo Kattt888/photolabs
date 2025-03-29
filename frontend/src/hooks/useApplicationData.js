@@ -28,7 +28,6 @@ const useApplicationData = () => {
   }, []);
 
  
-  
   useEffect(() => {
     fetch("/api/topics")
       .then((response) => response.json())
