@@ -36,7 +36,7 @@ const useApplicationData = () => {
 
   // Function to fetch photos by topic
   const fetchPhotosByTopic = (topicId) => {
-    fetch(`$/api/topics/${topicId}/photos`)
+    fetch(`/api/topics/${topicId}/photos`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch topic photos");
       return res.json();
